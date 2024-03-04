@@ -55,6 +55,7 @@ def gaussianise(Y_m, axis=0):
 def process_data(data, likelihoods, data_opts, samples_groups):
     for m in range(len(data)):
         # For some wierd reason, when using reticulate from R, missing values are stored as -2147483648
+        data[m] = data[m].astype(float)
         data[m][data[m] == -2147483648] = np.nan
 
         # Removing features with no variance
